@@ -1,11 +1,12 @@
 substitutions:
-  device_name: "ld2410s"
-  device_name_pretty: Presence sensor
-  uart_tx_pin: GPIO17
-  uart_rx_pin: GPIO16
+  device_name: "home-office-presence"
+  device_name_pretty: Home Office Presence
+  uart_tx_pin: GPIO44
+  uart_rx_pin: GPIO5
+  detection_pin: GPIO43
 
 esp32:
-  board: esp32doit-devkit-v1
+  board: esp32-s3-devkitc-1
   framework:
     type: arduino
 
@@ -65,7 +66,7 @@ uart:
   #    - lambda: UARTDebug::log_hex(direction, bytes, ':');
 
 deep_sleep:
-  wakeup_pin: GPIO15
+  wakeup_pin: ${detection_pin}
   wakeup_pin_mode: KEEP_AWAKE
 
 ld2410s:
